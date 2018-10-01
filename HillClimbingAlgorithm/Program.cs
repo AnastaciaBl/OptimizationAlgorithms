@@ -12,7 +12,7 @@ namespace HillClimbingAlgorithm
         {
             SeriesGenerator generator = new SeriesGenerator();
             var elements = generator.GenerateHeap();
-            HillClimbing result = new HillClimbing(elements, 1, 1);
+            HillClimbing result = new HillClimbing(elements, 1);
             Console.ReadKey();
         }
     }

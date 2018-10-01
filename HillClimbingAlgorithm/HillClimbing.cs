@@ -13,13 +13,16 @@ namespace HillClimbingAlgorithm
         public int[] ResultVector { get; private set; }
         public int[] WeightVector { get; private set; }
 
-        public HillClimbing(List<int> elements, int area, int amountOfStartPoints)
+        public HillClimbing()
         {
-            WorkArea = area;
+            WorkArea = 1;
+        }
+
+        public HillClimbing(List<int> elements, int amountOfStartPoints):this()
+        {
             AmountOfStartPoints = amountOfStartPoints;
             WeightVector = elements.ToArray();
-            ResultVector = new int[elements.Count];
-            CreateRandomVector();
+            ResultVector = new int[elements.Count];            
         }
 
         private void CreateRandomVector() {
@@ -28,15 +31,49 @@ namespace HillClimbingAlgorithm
                 ResultVector[i] = random.Next(0, 2);
         }
 
-        private int[,] CreateVariantsOfLocalAnswer()
+        //TODO expand function for bigger work area
+        private int[] CreateVariantsOfLocalAnswer()
         {
-            var array = new int[0,0];
+            var array = new int[Convert.ToInt32(Math.Pow(2, WorkArea))];
+            array[0] = 0;
+            array[1] = 1;
             return array;
         }
 
-        public void FindOptimalVariant()
+        public void FindOptimalVariant(int amountOfStarts)
         {
+            List<string> optimal = new List<string>();
+            for(int i = 0; i < amountOfStarts; i++)
+            {
+                CreateRandomVector();
+                for(int j = 0; j < ResultVector.Length; j++)
+                {
+                    var variants = CreateVariantsOfLocalAnswer();
+                    var tempResult = new List<double>();
+                    for (int k = 0; k < variants.Length; k++)
+                    {
+                        ResultVector[j] = variants[k];
+                        tempResult.Add(HeuristicFunction());
+                    }
+                    ResultVector[j] = variants[FindIndexOfLocalOptimumVariant(tempResult)];
+                }
+            }
+        }
 
+        //choose result wich has minimal value of HeuristicFunction
+        private int FindIndexOfLocalOptimumVariant(List<double> results)
+        {
+            double min = results.Min();
+            int index = -1;
+            for(int i=0;i< results.Count;i++)
+            {
+                if (min == results[i])
+                {
+                    index = i;
+                    break;
+                }
+            }
+            return index;
         }
 
         public double HeuristicFunction()
