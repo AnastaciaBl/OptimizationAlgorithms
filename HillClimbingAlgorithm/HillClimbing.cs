@@ -12,6 +12,7 @@ namespace HillClimbingAlgorithm
         public int AmountOfStartPoints { get; }
         public int[] ResultVector { get; private set; }
         public int[] WeightVector { get; private set; }
+        public double OptimalValue { get; private set; }
 
         public HillClimbing()
         {
@@ -22,7 +23,8 @@ namespace HillClimbingAlgorithm
         {
             AmountOfStartPoints = amountOfStartPoints;
             WeightVector = elements.ToArray();
-            ResultVector = new int[elements.Count];            
+            ResultVector = new int[elements.Count];
+            FindOptimalVariant();
         }
 
         private void CreateRandomVector() {
@@ -40,10 +42,10 @@ namespace HillClimbingAlgorithm
             return array;
         }
 
-        public void FindOptimalVariant(int amountOfStarts)
+        private void FindOptimalVariant()
         {
-            List<string> optimal = new List<string>();
-            for(int i = 0; i < amountOfStarts; i++)
+            var optimals = new List<OptimalRepresentation>();
+            for(int i = 0; i < AmountOfStartPoints; i++)
             {
                 CreateRandomVector();
                 for(int j = 0; j < ResultVector.Length; j++)
@@ -57,7 +59,11 @@ namespace HillClimbingAlgorithm
                     }
                     ResultVector[j] = variants[FindIndexOfLocalOptimumVariant(tempResult)];
                 }
+                optimals.Add(new OptimalRepresentation(CreateStringFromResultVector(), HeuristicFunction()));
             }
+            int index = FindIndexOfOptimumVariant(optimals);
+            OptimalValue = optimals[index].Value;
+            CreateResultVectorFromString(optimals[index].Vector);
         }
 
         //choose result wich has minimal value of HeuristicFunction
@@ -76,6 +82,21 @@ namespace HillClimbingAlgorithm
             return index;
         }
 
+        private int FindIndexOfOptimumVariant(List<OptimalRepresentation> optimals)
+        {
+            double min = optimals[0].Value;
+            int index = 0;
+            for (int i = 0; i < optimals.Count; i++)
+            {
+                if (min > optimals[i].Value)
+                {
+                    min = optimals[i].Value;
+                    index = i;
+                }
+            }
+            return index;
+        }
+
         public double HeuristicFunction()
         {
             int xc = 0, c = 0;
@@ -85,6 +106,20 @@ namespace HillClimbingAlgorithm
                 c += WeightVector[i];
             }
             return Math.Abs(xc - 0.5 * c);
+        }
+
+        private string CreateStringFromResultVector()
+        {
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < ResultVector.Length; i++)
+                sb.Append(ResultVector[i]);
+            return sb.ToString();
+        }
+
+        private void CreateResultVectorFromString(string vector)
+        {
+            for (int i = 0; i < ResultVector.Length; i++)
+                ResultVector[i] = (int)char.GetNumericValue(vector[i]);
         }
     }
 }

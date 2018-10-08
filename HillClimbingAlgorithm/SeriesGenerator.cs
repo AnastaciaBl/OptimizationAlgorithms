@@ -22,6 +22,18 @@ namespace HillClimbingAlgorithm
             return resultHeap;
         }
 
+        public List<int> GenerateHeap(int amountOfElInFirsHeap)
+        {
+            Random random = new Random();
+            List<int> firstHeap, secondHeap;
+            int sum = 0;
+
+            firstHeap = GenerateFirstHeap(amountOfElInFirsHeap, random, ref sum);
+            secondHeap = GenerateSecondHeap(sum, random);
+            List<int> resultHeap = MergeAndCheckHeaps(firstHeap, secondHeap);
+            return resultHeap;
+        }
+
         private List<int> GenerateFirstHeap(int amountofElements, Random random, ref int sum)
         {
             List<int> firstHeap = new List<int>();
