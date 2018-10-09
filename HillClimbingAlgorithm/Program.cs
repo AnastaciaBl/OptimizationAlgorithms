@@ -12,15 +12,18 @@ namespace HillClimbingAlgorithm
         {
             SeriesGenerator generator = new SeriesGenerator();
             int amountOfTests = 100;
-            double amountOfCorrectOptimals = 0;
+            double amountOfIncorrectOptimals = 0;
             for(int i=0;i< amountOfTests;i++)
             {
-                var elements = generator.GenerateHeap(30);
-                HillClimbing result = new HillClimbing(elements, 3);
-                if (result.OptimalValue == 0)
-                    amountOfCorrectOptimals++;
+                var elements = generator.GenerateHeap(500);
+                HillClimbing result = new HillClimbing(elements, 1);
+                if (result.OptimalValue != 0)
+                    amountOfIncorrectOptimals++;
+                Console.WriteLine($"Test #{i + 1}:");
+                Console.WriteLine($"Amount of elements: {elements.Count}");
+                Console.WriteLine($"Difference between heaps: {result.OptimalValue}");
             }
-            Console.WriteLine($"Mistake: {amountOfCorrectOptimals / amountOfTests}%");
+            Console.WriteLine($"Mistake: {(amountOfIncorrectOptimals / amountOfTests) * 100}%");
             Console.ReadKey();
         }
     }
