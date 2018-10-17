@@ -11,7 +11,7 @@ namespace HillClimbingAlgorithm
         public int WorkArea { get; }
         public int AmountOfStartPoints { get; }
         public int[] ResultVector { get; private set; }
-        public int[] WeightVector { get; private set; }
+        public double[] WeightVector { get; private set; }
         public double OptimalValue { get; private set; }
 
         public HillClimbing()
@@ -19,7 +19,7 @@ namespace HillClimbingAlgorithm
             WorkArea = 1;
         }
 
-        public HillClimbing(List<int> elements, int amountOfStartPoints):this()
+        public HillClimbing(List<double> elements, int amountOfStartPoints):this()
         {
             AmountOfStartPoints = amountOfStartPoints;
             WeightVector = elements.ToArray();
@@ -99,7 +99,7 @@ namespace HillClimbingAlgorithm
 
         public double HeuristicFunction()
         {
-            int xc = 0, c = 0;
+            double xc = 0, c = 0;
             for(int i=0;i<ResultVector.Length;i++)
             {
                 xc += ResultVector[i] * WeightVector[i];
