@@ -13,6 +13,7 @@ namespace HillClimbingAlgorithm
         public int[] ResultVector { get; private set; }
         public double[] WeightVector { get; private set; }
         public double OptimalValue { get; private set; }
+        public int AmountOfIteration { get; private set; }
 
         public HillClimbing()
         {
@@ -27,8 +28,7 @@ namespace HillClimbingAlgorithm
             FindOptimalVariant();
         }
 
-        private void CreateRandomVector() {
-            Random random = new Random();
+        private void CreateRandomVector(Random random) {
             for (int i = 0; i < ResultVector.Length; i++)
                 ResultVector[i] = random.Next(0, 2);
         }
@@ -44,12 +44,15 @@ namespace HillClimbingAlgorithm
 
         private void FindOptimalVariant()
         {
+            Random random = new Random();
             var optimals = new List<OptimalRepresentation>();
             for(int i = 0; i < AmountOfStartPoints; i++)
             {
-                CreateRandomVector();
+                int iterationCounter = 0;
+                CreateRandomVector(random);
                 for(int j = 0; j < ResultVector.Length; j++)
                 {
+                    int oldVariant = ResultVector[j];
                     var variants = CreateVariantsOfLocalAnswer();
                     var tempResult = new List<double>();
                     for (int k = 0; k < variants.Length; k++)
@@ -57,13 +60,17 @@ namespace HillClimbingAlgorithm
                         ResultVector[j] = variants[k];
                         tempResult.Add(HeuristicFunction());
                     }
-                    ResultVector[j] = variants[FindIndexOfLocalOptimumVariant(tempResult)];
+                    int newVariant = variants[FindIndexOfLocalOptimumVariant(tempResult)];
+                    if (newVariant != oldVariant)
+                        iterationCounter++;
+                    ResultVector[j] = newVariant;
                 }
-                optimals.Add(new OptimalRepresentation(CreateStringFromResultVector(), HeuristicFunction()));
+                optimals.Add(new OptimalRepresentation(CreateStringFromResultVector(), HeuristicFunction(), iterationCounter));
             }
             int index = FindIndexOfOptimumVariant(optimals);
             OptimalValue = optimals[index].Value;
             CreateResultVectorFromString(optimals[index].Vector);
+            AmountOfIteration = optimals[index].AmountOfIteration;
         }
 
         //choose result wich has minimal value of HeuristicFunction
@@ -108,7 +115,7 @@ namespace HillClimbingAlgorithm
             return Math.Abs(xc - 0.5 * c);
         }
 
-        private string CreateStringFromResultVector()
+        public string CreateStringFromResultVector()
         {
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < ResultVector.Length; i++)
