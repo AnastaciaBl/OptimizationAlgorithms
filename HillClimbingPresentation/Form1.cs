@@ -1,14 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using HillClimbingLibrary;
+using System.Windows.Forms.DataVisualization.Charting;
+using HillClimbingAlgorithm;
 
 namespace HillClimbingPresentation
 {
@@ -16,11 +11,16 @@ namespace HillClimbingPresentation
     {
         public List<double> Elements { get; set; }
         public HillClimbing Algorithm { get; set; }
+        public const int AmountOfTest = 10;
 
         public Form1()
         {
             InitializeComponent();
             Elements = new List<double>();
+            for (var i = 0; i < AmountOfTest; i++)
+            {
+                chVectors.Series.Add(new Series());
+            }
         }
 
         private void btnOpen_Click(object sender, EventArgs e)
@@ -57,6 +57,15 @@ namespace HillClimbingPresentation
                     MessageBox.Show("Файл сохранен");
                 }
             }
+        }
+
+        private void FillChart()
+        {
+            for (var i = 0; i < chVectors.Series.Count; i++)
+            {
+                chVectors.Series[i].Points.Clear();
+            }
+
         }
     }
 }
