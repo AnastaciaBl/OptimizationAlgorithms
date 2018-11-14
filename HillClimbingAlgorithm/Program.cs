@@ -19,7 +19,8 @@ namespace HillClimbingAlgorithm
                 Console.WriteLine($"Amount of elements: {elements.Count}");
                 Console.WriteLine($"Difference between heaps: {result.OptimalValue}");
                 Console.WriteLine($"Amount of iteration: {result.AmountOfIteration}");
-                SaveInFile("answer", result.CreateStringFromResultVector(), i + 1);
+                SaveInFile("answer.txt", result.CreateStringFromResultVector(), i + 1, result.OptimalValue);
+                SaveInFileAnotherFormat("answerExtra.txt", result.CreateStringFromResultVector(), i + 1, result.OptimalValue);
             }
             //Console.WriteLine($"Mistake: {(amountOfIncorrectOptimals / amountOfTests) * 100}%");
             Console.ReadKey();
@@ -36,11 +37,23 @@ namespace HillClimbingAlgorithm
             return elements;
         }
 
-        public static void SaveInFile(string file, string answer, int test)
+        public static void SaveInFile(string file, string answer, int test, double difference)
         {
             using (StreamWriter sr = new StreamWriter(file, true))
             {
                 sr.WriteLine($"Test #{test}: {answer}");
+            }
+        }
+
+        public static void SaveInFileAnotherFormat(string file, string answer, int test, double difference)
+        {
+            using (StreamWriter sr = new StreamWriter(file, true))
+            {
+                sr.WriteLine($"Test #{test}: {difference}");
+                for (int i = 0; i < answer.Length; i++)
+                {
+                    sr.WriteLine(answer[i]);
+                }
             }
         }
     }

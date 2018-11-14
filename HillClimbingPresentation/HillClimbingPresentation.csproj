@@ -79,11 +79,5 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\HillClimbing\HillClimbing.csproj">
-      <Project>{49663bc0-7ca7-41f1-a66b-5f7a871e248e}</Project>
-      <Name>HillClimbing</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

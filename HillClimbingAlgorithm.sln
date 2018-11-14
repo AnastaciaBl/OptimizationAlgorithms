@@ -5,12 +5,7 @@ VisualStudioVersion = 15.0.28010.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HillClimbingAlgorithm", "HillClimbingAlgorithm\HillClimbingAlgorithm.csproj", "{CD797212-19FB-417E-8563-EE8E7C204752}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HillClimbing", "HillClimbing\HillClimbing.csproj", "{49663BC0-7CA7-41F1-A66B-5F7A871E248E}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HillClimbingPresentation", "HillClimbingPresentation\HillClimbingPresentation.csproj", "{F7A0C2A3-DF1F-463B-B9CF-83AEAEC00C3E}"
-	ProjectSection(ProjectDependencies) = postProject
-		{49663BC0-7CA7-41F1-A66B-5F7A871E248E} = {49663BC0-7CA7-41F1-A66B-5F7A871E248E}
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,10 +17,6 @@ Global
 		{CD797212-19FB-417E-8563-EE8E7C204752}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CD797212-19FB-417E-8563-EE8E7C204752}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CD797212-19FB-417E-8563-EE8E7C204752}.Release|Any CPU.Build.0 = Release|Any CPU
-		{49663BC0-7CA7-41F1-A66B-5F7A871E248E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{49663BC0-7CA7-41F1-A66B-5F7A871E248E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{49663BC0-7CA7-41F1-A66B-5F7A871E248E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{49663BC0-7CA7-41F1-A66B-5F7A871E248E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F7A0C2A3-DF1F-463B-B9CF-83AEAEC00C3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F7A0C2A3-DF1F-463B-B9CF-83AEAEC00C3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F7A0C2A3-DF1F-463B-B9CF-83AEAEC00C3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
