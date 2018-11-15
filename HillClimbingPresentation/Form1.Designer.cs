@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.chVectors = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.btnOpen = new System.Windows.Forms.Button();
             this.tBAnswer = new System.Windows.Forms.TextBox();
@@ -46,13 +46,15 @@
             // 
             // chVectors
             // 
-            chartArea3.Name = "ChartArea1";
-            this.chVectors.ChartAreas.Add(chartArea3);
+            chartArea2.Name = "ChartArea1";
+            this.chVectors.ChartAreas.Add(chartArea2);
             this.chVectors.Location = new System.Drawing.Point(0, 0);
             this.chVectors.Name = "chVectors";
-            series3.ChartArea = "ChartArea1";
-            series3.Name = "Series1";
-            this.chVectors.Series.Add(series3);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series2.Color = System.Drawing.Color.Red;
+            series2.Name = "Series1";
+            this.chVectors.Series.Add(series2);
             this.chVectors.Size = new System.Drawing.Size(487, 450);
             this.chVectors.TabIndex = 0;
             this.chVectors.Text = "chart1";
@@ -150,7 +152,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.chVectors);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Optimization";
             ((System.ComponentModel.ISupportInitialize)(this.chVectors)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

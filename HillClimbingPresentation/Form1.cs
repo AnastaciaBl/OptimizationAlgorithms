@@ -11,16 +11,12 @@ namespace HillClimbingPresentation
     {
         public List<double> Elements { get; set; }
         public HillClimbing Algorithm { get; set; }
-        public const int AmountOfTest = 10;
+        public const int AmountOfTests = 10;
 
         public Form1()
         {
             InitializeComponent();
             Elements = new List<double>();
-            for (var i = 0; i < AmountOfTest; i++)
-            {
-                chVectors.Series.Add(new Series());
-            }
         }
 
         private void btnOpen_Click(object sender, EventArgs e)
@@ -35,10 +31,25 @@ namespace HillClimbingPresentation
                         while (!sr.EndOfStream)
                             Elements.Add(Convert.ToDouble(sr.ReadLine()));
                     }
-                    Algorithm = new HillClimbing(Elements, 3);
-                    tBAnswer.Text = Algorithm.OptimalValue.ToString();
+                    FindOptimalDecision();
+                    tBAnswer.Text = Algorithm.OptimalValue.Value.ToString();
                     tBElements.Text = Elements.Count.ToString();
-                    tBIterations.Text = Algorithm.AmountOfIteration.ToString();
+                    tBIterations.Text = Algorithm.OptimalValue.AmountOfIteration.ToString();
+                    FillChart();
+                }
+            }
+        }
+
+        private void FindOptimalDecision()
+        {
+            double optimal = 1000;
+            for (int i = 0; i < AmountOfTests; i++)
+            {
+                var temp = new HillClimbing(Elements, 5);
+                if (temp.OptimalValue.Value < optimal)
+                {
+                    Algorithm = temp;
+                    optimal = temp.OptimalValue.Value;
                 }
             }
         }
@@ -52,7 +63,12 @@ namespace HillClimbingPresentation
                     string fileName = sfd.FileName;
                     using (StreamWriter sr = new StreamWriter(fileName))
                     {
-                        sr.WriteLine($"Result: {Algorithm.CreateStringFromResultVector()}");
+                        sr.WriteLine($"Result: {Algorithm.OptimalValue.Value}");
+                        string answer = Algorithm.CreateStringFromResultVector();
+                        foreach (var r in Algorithm.ResultVector)
+                        {
+                            sr.WriteLine((int) r);
+                        }
                     }
                     MessageBox.Show("Файл сохранен");
                 }
@@ -61,11 +77,11 @@ namespace HillClimbingPresentation
 
         private void FillChart()
         {
-            for (var i = 0; i < chVectors.Series.Count; i++)
+            chVectors.Series[0].Points.Clear();
+            for (int i = 0; i < Algorithm.OptimalValue.ChartInfo.AmountOfIteration; i++)
             {
-                chVectors.Series[i].Points.Clear();
+                chVectors.Series[0].Points.AddXY(i + 1, Algorithm.OptimalValue.ChartInfo.FunctionValue[i]);
             }
-
         }
     }
 }
