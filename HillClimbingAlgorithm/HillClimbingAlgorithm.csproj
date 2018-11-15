@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChartPresentationFormat.cs" />
     <Compile Include="HillClimbing.cs" />
     <Compile Include="OptimalRepresentation.cs" />
     <Compile Include="Program.cs" />

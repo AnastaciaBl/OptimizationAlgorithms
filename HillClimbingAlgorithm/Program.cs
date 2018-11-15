@@ -17,10 +17,10 @@ namespace HillClimbingAlgorithm
                 HillClimbing result = new HillClimbing(elements, 5);
                 Console.WriteLine($"Test #{i + 1}:");
                 Console.WriteLine($"Amount of elements: {elements.Count}");
-                Console.WriteLine($"Difference between heaps: {result.OptimalValue}");
-                Console.WriteLine($"Amount of iteration: {result.AmountOfIteration}");
-                SaveInFile("answer.txt", result.CreateStringFromResultVector(), i + 1, result.OptimalValue);
-                SaveInFileAnotherFormat("answerExtra.txt", result.CreateStringFromResultVector(), i + 1, result.OptimalValue);
+                Console.WriteLine($"Difference between heaps: {result.OptimalValue.Value}");
+                Console.WriteLine($"Amount of iteration: {result.OptimalValue.AmountOfIteration}");
+                SaveInFile("answer.txt", result.CreateStringFromResultVector(), i + 1, result.OptimalValue.Value);
+                SaveInFileAnotherFormat("answerExtra.txt", result.CreateStringFromResultVector(), i + 1, result.OptimalValue.Value);
             }
             //Console.WriteLine($"Mistake: {(amountOfIncorrectOptimals / amountOfTests) * 100}%");
             Console.ReadKey();

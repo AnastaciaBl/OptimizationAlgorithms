@@ -16,8 +16,7 @@ namespace HillClimbingAlgorithm
         public int AmountOfStartPoints { get; }
         public State[] ResultVector { get; private set; }
         public double[] WeightVector { get; private set; }
-        public double OptimalValue { get; private set; }
-        public int AmountOfIteration { get; private set; }
+        public OptimalRepresentation OptimalValue { get; private set; }
 
         public HillClimbing()
         {
@@ -44,21 +43,23 @@ namespace HillClimbingAlgorithm
             var optimals = new List<OptimalRepresentation>();
             for(int i = 0; i < AmountOfStartPoints; i++)
             {
+                var optimalRepresentation = new OptimalRepresentation();
                 int iterationCounter = 0;
                 CreateRandomVector(random);
                 int optimalIndex = FindIndexOfOptimalElement(ResultVector); ;
                 while (optimalIndex != -1)
                 {
                     iterationCounter++;
+                    optimalRepresentation.ChartInfo.FunctionValue.Add(HeuristicFunction(ResultVector));
                     SwitchElements(ResultVector, optimalIndex);
                     optimalIndex = FindIndexOfOptimalElement(ResultVector);
                 }
-                optimals.Add(new OptimalRepresentation(CreateStringFromResultVector(), HeuristicFunction(), iterationCounter));
+                optimalRepresentation.SetValues(CreateStringFromResultVector(), HeuristicFunction(), iterationCounter);
+                optimals.Add(optimalRepresentation);
             }
             int index = FindIndexOfOptimumVariant(optimals);
-            OptimalValue = optimals[index].Value;
+            OptimalValue = optimals[index];
             CreateResultVectorFromString(optimals[index].Vector);
-            AmountOfIteration = optimals[index].AmountOfIteration;
         }
 
         private int FindIndexOfOptimalElement(State[] vector)
