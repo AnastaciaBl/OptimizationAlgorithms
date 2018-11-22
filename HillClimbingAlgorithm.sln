@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HillClimbingAlgorithm", "Hi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HillClimbingPresentation", "HillClimbingPresentation\HillClimbingPresentation.csproj", "{F7A0C2A3-DF1F-463B-B9CF-83AEAEC00C3E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HillClimbing", "HillClimbing\HillClimbing.csproj", "{9DE75568-AD62-4937-9366-741B4A346C88}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{F7A0C2A3-DF1F-463B-B9CF-83AEAEC00C3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F7A0C2A3-DF1F-463B-B9CF-83AEAEC00C3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F7A0C2A3-DF1F-463B-B9CF-83AEAEC00C3E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9DE75568-AD62-4937-9366-741B4A346C88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9DE75568-AD62-4937-9366-741B4A346C88}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9DE75568-AD62-4937-9366-741B4A346C88}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9DE75568-AD62-4937-9366-741B4A346C88}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
