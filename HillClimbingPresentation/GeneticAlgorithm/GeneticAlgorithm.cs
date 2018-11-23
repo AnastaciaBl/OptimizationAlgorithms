@@ -40,9 +40,9 @@ namespace HillClimbingPresentation.GeneticAlgorithm
                 SetInfoAboutStrongestWeaknessIndividuals();
                 SetRankToPopulation();
                 CountProbabilityToBeParent();
-                var parents = ChooseParents();
+                var parents = ChooseParents(random);
                 var children = MakeChildren(parents);
-                MutateIndividuals(children);
+                MutateIndividuals(children, random);
                 CreateNewPopulation(children);
             }
         }
@@ -72,7 +72,7 @@ namespace HillClimbingPresentation.GeneticAlgorithm
         private void SetRankToPopulation()
         {
             int rank = 1;
-            Population.OrderBy(p => p.OptimalValue)
+            Population.OrderByDescending(p => p.OptimalValue)
                 .ToList()
                 .ForEach(p =>
                 {
@@ -87,11 +87,11 @@ namespace HillClimbingPresentation.GeneticAlgorithm
                 p.ProbabilityToBeParent = Math.Round((2.0 * p.Rank) / (AmountOfIndividuals * (AmountOfIndividuals + 1)), 4));
         }
 
-        private List<Parents> ChooseParents()
+        private List<Parents> ChooseParents(Random random)
         {
             var listOfParents = new List<Parents>();
             for (int i = 0; i < AmountOfIndividuals; i++)
-                listOfParents.Add(new Parents(Population));
+                listOfParents.Add(new Parents(Population, random));
             return listOfParents;
         }
 
@@ -102,9 +102,9 @@ namespace HillClimbingPresentation.GeneticAlgorithm
             return children;
         }
 
-        public void MutateIndividuals(List<Vector> children)
+        public void MutateIndividuals(List<Vector> children, Random random)
         {
-            children.ForEach(c => c.Mutate(Fitness));
+            children.ForEach(c => c.Mutate(Fitness, random));
         }
 
         private void CreateNewPopulation(List<Vector> children)

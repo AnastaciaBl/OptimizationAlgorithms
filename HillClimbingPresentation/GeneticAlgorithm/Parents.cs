@@ -10,9 +10,8 @@ namespace HillClimbingPresentation.GeneticAlgorithm
         public Vector FirstParent { get; set; }
         public Vector SecondParent { get; set; }
 
-        public Parents(List<Vector> population)
+        public Parents(List<Vector> population, Random random)
         {
-            Random random = new Random();
             FirstParent = ChooseParent(population, random);
             SecondParent = ChooseParent(population, random);
         }
@@ -20,17 +19,18 @@ namespace HillClimbingPresentation.GeneticAlgorithm
         private Vector ChooseParent(List<Vector> population, Random random)
         {
             var sortedPopulation = population.OrderBy(p => p.ProbabilityToBeParent).ToList();
-            for (int i = 1; i < sortedPopulation.Count; i++)
-                sortedPopulation[i].ProbabilityToBeParent += sortedPopulation[i - 1].ProbabilityToBeParent;
+            var sortedPopulationProbability = sortedPopulation.Select(s => s.ProbabilityToBeParent).ToList();
+            for (int i = 1; i < sortedPopulationProbability.Count; i++)
+                sortedPopulationProbability[i] += sortedPopulationProbability[i - 1];
 
             double randomValue = random.NextDouble();
-            if (sortedPopulation[0].ProbabilityToBeParent > randomValue)
+            if (sortedPopulationProbability[0] > randomValue)
                 return sortedPopulation[0];
 
             for (int i = 1; i < sortedPopulation.Count; i++)
             {
-                if (sortedPopulation[i - 1].ProbabilityToBeParent < randomValue &&
-                    sortedPopulation[i].ProbabilityToBeParent > randomValue)
+                if (sortedPopulationProbability[i - 1] < randomValue &&
+                    sortedPopulationProbability[i] > randomValue)
                     return sortedPopulation[i];
             }
             return null;

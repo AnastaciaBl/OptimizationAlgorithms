@@ -83,7 +83,7 @@ namespace HillClimbingPresentation
         #region GeneticAlgorithm
         private void btnGeneticStart_Click(object sender, EventArgs e)
         {
-            GeneticAlg = new GeneticAlgorithm.GeneticAlgorithm(5, 500, Elements.Count, Elements.ToArray());
+            GeneticAlg = new GeneticAlgorithm.GeneticAlgorithm(Convert.ToInt32(tbIndividuals.Text), Convert.ToInt32(tbPopulation.Text), Elements.Count, Elements.ToArray());
             tbGeneticAnswer.Text = GeneticAlg.Result.OptimalValue.ToString();
             tbGeneticActualPopulation.Text = GeneticAlg.LogInfoAboutPopulation.AmountOfPopulation.ToString();
             FillGeneticChart();

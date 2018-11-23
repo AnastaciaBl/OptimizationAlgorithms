@@ -16,9 +16,8 @@ namespace HillClimbingPresentation.GeneticAlgorithm
             OptimalValue = optimalValue;
         }
 
-        public void Mutate(double[] fitness)
+        public void Mutate(double[] fitness, Random random)
         {
-            Random random = new Random();
             int amountOfMutateSigns = Elements.Length / 20;
             for (int i = 0; i < amountOfMutateSigns; i++)
             {

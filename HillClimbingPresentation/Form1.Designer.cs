@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.chVectors = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.btnOpen = new System.Windows.Forms.Button();
             this.tBAnswer = new System.Windows.Forms.TextBox();
@@ -45,38 +45,38 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.chGenetic = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.tbPopulation = new System.Windows.Forms.TextBox();
-            this.tbIndividuals = new System.Windows.Forms.TextBox();
-            this.tbGeneticAnswer = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.tbGeneticActualPopulation = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnGeneticStart = new System.Windows.Forms.Button();
             this.btsSave = new System.Windows.Forms.Button();
+            this.btnGeneticStart = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.tbPopulation = new System.Windows.Forms.TextBox();
+            this.tbGeneticActualPopulation = new System.Windows.Forms.TextBox();
+            this.tbIndividuals = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.tbGeneticAnswer = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.chGenetic = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)(this.chVectors)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chGenetic)).BeginInit();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chGenetic)).BeginInit();
             this.SuspendLayout();
             // 
             // chVectors
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chVectors.ChartAreas.Add(chartArea1);
+            chartArea3.Name = "ChartArea1";
+            this.chVectors.ChartAreas.Add(chartArea3);
             this.chVectors.Location = new System.Drawing.Point(6, 8);
             this.chVectors.Name = "chVectors";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-            series1.Color = System.Drawing.Color.Red;
-            series1.Name = "Series1";
-            this.chVectors.Series.Add(series1);
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series3.Color = System.Drawing.Color.Red;
+            series3.Name = "Series1";
+            this.chVectors.Series.Add(series3);
             this.chVectors.Size = new System.Drawing.Size(487, 450);
             this.chVectors.TabIndex = 0;
             this.chVectors.Text = "chart1";
@@ -202,86 +202,25 @@
             this.tabPage2.Text = "Genetic Algorithm";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // chGenetic
+            // btsSave
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chGenetic.ChartAreas.Add(chartArea2);
-            this.chGenetic.Location = new System.Drawing.Point(3, 6);
-            this.chGenetic.Name = "chGenetic";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-            series2.Color = System.Drawing.Color.Red;
-            series2.Name = "Series1";
-            this.chGenetic.Series.Add(series2);
-            this.chGenetic.Size = new System.Drawing.Size(487, 455);
-            this.chGenetic.TabIndex = 1;
-            this.chGenetic.Text = "chGenetic";
+            this.btsSave.Location = new System.Drawing.Point(557, 301);
+            this.btsSave.Name = "btsSave";
+            this.btsSave.Size = new System.Drawing.Size(167, 56);
+            this.btsSave.TabIndex = 12;
+            this.btsSave.Text = "Save as...";
+            this.btsSave.UseVisualStyleBackColor = true;
+            this.btsSave.Click += new System.EventHandler(this.btsSave_Click);
             // 
-            // tbPopulation
+            // btnGeneticStart
             // 
-            this.tbPopulation.Location = new System.Drawing.Point(165, 22);
-            this.tbPopulation.Name = "tbPopulation";
-            this.tbPopulation.Size = new System.Drawing.Size(100, 20);
-            this.tbPopulation.TabIndex = 2;
-            this.tbPopulation.Text = "500";
-            // 
-            // tbIndividuals
-            // 
-            this.tbIndividuals.Location = new System.Drawing.Point(165, 59);
-            this.tbIndividuals.Name = "tbIndividuals";
-            this.tbIndividuals.Size = new System.Drawing.Size(100, 20);
-            this.tbIndividuals.TabIndex = 3;
-            this.tbIndividuals.Text = "5";
-            // 
-            // tbGeneticAnswer
-            // 
-            this.tbGeneticAnswer.Location = new System.Drawing.Point(165, 96);
-            this.tbGeneticAnswer.Name = "tbGeneticAnswer";
-            this.tbGeneticAnswer.Size = new System.Drawing.Size(100, 20);
-            this.tbGeneticAnswer.TabIndex = 4;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(17, 25);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(110, 13);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Amount of population:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(17, 62);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(110, 13);
-            this.label5.TabIndex = 6;
-            this.label5.Text = "Amount of individuals:";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(17, 99);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(45, 13);
-            this.label6.TabIndex = 7;
-            this.label6.Text = "Answer:";
-            // 
-            // tbGeneticActualPopulation
-            // 
-            this.tbGeneticActualPopulation.Location = new System.Drawing.Point(165, 132);
-            this.tbGeneticActualPopulation.Name = "tbGeneticActualPopulation";
-            this.tbGeneticActualPopulation.Size = new System.Drawing.Size(100, 20);
-            this.tbGeneticActualPopulation.TabIndex = 8;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(17, 135);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(142, 13);
-            this.label7.TabIndex = 9;
-            this.label7.Text = "Amount of actual population:";
+            this.btnGeneticStart.Location = new System.Drawing.Point(557, 226);
+            this.btnGeneticStart.Name = "btnGeneticStart";
+            this.btnGeneticStart.Size = new System.Drawing.Size(167, 56);
+            this.btnGeneticStart.TabIndex = 11;
+            this.btnGeneticStart.Text = "Start";
+            this.btnGeneticStart.UseVisualStyleBackColor = true;
+            this.btnGeneticStart.Click += new System.EventHandler(this.btnGeneticStart_Click);
             // 
             // groupBox2
             // 
@@ -300,25 +239,86 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Info";
             // 
-            // btnGeneticStart
+            // label4
             // 
-            this.btnGeneticStart.Location = new System.Drawing.Point(557, 226);
-            this.btnGeneticStart.Name = "btnGeneticStart";
-            this.btnGeneticStart.Size = new System.Drawing.Size(167, 56);
-            this.btnGeneticStart.TabIndex = 11;
-            this.btnGeneticStart.Text = "Start";
-            this.btnGeneticStart.UseVisualStyleBackColor = true;
-            this.btnGeneticStart.Click += new System.EventHandler(this.btnGeneticStart_Click);
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(17, 25);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(110, 13);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "Amount of population:";
             // 
-            // btsSave
+            // label7
             // 
-            this.btsSave.Location = new System.Drawing.Point(557, 301);
-            this.btsSave.Name = "btsSave";
-            this.btsSave.Size = new System.Drawing.Size(167, 56);
-            this.btsSave.TabIndex = 12;
-            this.btsSave.Text = "Save as...";
-            this.btsSave.UseVisualStyleBackColor = true;
-            this.btsSave.Click += new System.EventHandler(this.btsSave_Click);
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(17, 135);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(142, 13);
+            this.label7.TabIndex = 9;
+            this.label7.Text = "Amount of actual population:";
+            // 
+            // tbPopulation
+            // 
+            this.tbPopulation.Location = new System.Drawing.Point(165, 22);
+            this.tbPopulation.Name = "tbPopulation";
+            this.tbPopulation.Size = new System.Drawing.Size(100, 20);
+            this.tbPopulation.TabIndex = 2;
+            this.tbPopulation.Text = "50";
+            // 
+            // tbGeneticActualPopulation
+            // 
+            this.tbGeneticActualPopulation.Location = new System.Drawing.Point(165, 132);
+            this.tbGeneticActualPopulation.Name = "tbGeneticActualPopulation";
+            this.tbGeneticActualPopulation.Size = new System.Drawing.Size(100, 20);
+            this.tbGeneticActualPopulation.TabIndex = 8;
+            // 
+            // tbIndividuals
+            // 
+            this.tbIndividuals.Location = new System.Drawing.Point(165, 59);
+            this.tbIndividuals.Name = "tbIndividuals";
+            this.tbIndividuals.Size = new System.Drawing.Size(100, 20);
+            this.tbIndividuals.TabIndex = 3;
+            this.tbIndividuals.Text = "10";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(17, 99);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(45, 13);
+            this.label6.TabIndex = 7;
+            this.label6.Text = "Answer:";
+            // 
+            // tbGeneticAnswer
+            // 
+            this.tbGeneticAnswer.Location = new System.Drawing.Point(165, 96);
+            this.tbGeneticAnswer.Name = "tbGeneticAnswer";
+            this.tbGeneticAnswer.Size = new System.Drawing.Size(100, 20);
+            this.tbGeneticAnswer.TabIndex = 4;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(17, 62);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(110, 13);
+            this.label5.TabIndex = 6;
+            this.label5.Text = "Amount of individuals:";
+            // 
+            // chGenetic
+            // 
+            chartArea4.Name = "ChartArea1";
+            this.chGenetic.ChartAreas.Add(chartArea4);
+            this.chGenetic.Location = new System.Drawing.Point(3, 6);
+            this.chGenetic.Name = "chGenetic";
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series4.Color = System.Drawing.Color.Red;
+            series4.Name = "Series1";
+            this.chGenetic.Series.Add(series4);
+            this.chGenetic.Size = new System.Drawing.Size(487, 455);
+            this.chGenetic.TabIndex = 1;
+            this.chGenetic.Text = "chGenetic";
             // 
             // Form1
             // 
@@ -334,9 +334,9 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chGenetic)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chGenetic)).EndInit();
             this.ResumeLayout(false);
 
         }
